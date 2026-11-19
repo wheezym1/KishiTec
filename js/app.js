@@ -1,4 +1,4 @@
-/* KishiTec · utilidades compartidas */
+/* Finora · utilidades compartidas */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -9,7 +9,7 @@ const CONFIG = {
   whatsapp: '51900865945',     // tu WhatsApp con código de país, sin + ni espacios
   yape: '900 865 945',
   plin: '900 865 945',
-  payee: 'KishiTec',
+  payee: 'Finora',
   freeShippingFrom: 150,
   shippingCost: 12
 };
@@ -42,8 +42,8 @@ function waLink(text) { return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + e
 
 /* ---------- Carrito (guardado en el navegador) ---------- */
 const Cart = {
-  get() { try { return JSON.parse(localStorage.getItem('KishiTec_cart')) || []; } catch { return []; } },
-  save(c) { localStorage.setItem('KishiTec_cart', JSON.stringify(c)); Cart.updateBadge(); },
+  get() { try { return JSON.parse(localStorage.getItem('Finora_cart')) || []; } catch { return []; } },
+  save(c) { localStorage.setItem('Finora_cart', JSON.stringify(c)); Cart.updateBadge(); },
   count() { return Cart.get().reduce((a, i) => a + i.qty, 0); },
   add(id, qty = 1, max = 20) {
     const c = Cart.get(); const it = c.find(i => i.id === id);
@@ -124,19 +124,19 @@ function renderChrome(user) {
       <div class="news"><h4>Suscríbete a nuestro newsletter</h4><p>Sé el primero en enterarte de nuevos lanzamientos, ofertas y más.</p>
         <form id="newsForm"><input type="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required><button type="submit" aria-label="Suscribirme"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></form></div>
     </div>
-    <div class="legal"><span>© ${new Date().getFullYear()} KishiTec. Todos los derechos reservados.</span><span>Términos y condiciones · Política de privacidad</span></div>
+    <div class="legal"><span>© ${new Date().getFullYear()} Finora. Todos los derechos reservados.</span><span>Términos y condiciones · Política de privacidad</span></div>
   </div></footer>`;
 
   $('#burger').addEventListener('click', () => $('#nav').classList.toggle('open'));
   $('#newsForm').addEventListener('submit', e => {
     e.preventDefault();
     const email = e.target.querySelector('input').value;
-    window.open(waLink('Hola KishiTec, quiero suscribirme al newsletter con este correo: ' + email), '_blank');
+    window.open(waLink('Hola Finora, quiero suscribirme al newsletter con este correo: ' + email), '_blank');
     e.target.innerHTML = '<p style="margin:0;color:#d9b483">¡Gracias por suscribirte!</p>';
   });
   Cart.updateBadge();
 }
 
-/* Cada página espera a KishiTec.ready para conocer al usuario */
-const KishiTec = { user: null, config: CONFIG };
+/* Cada página espera a Finora.ready para conocer al usuario */
+const Finora = { user: null, config: CONFIG };
 KishTec.ready = Promise.resolve().then(() => renderChrome(null));
