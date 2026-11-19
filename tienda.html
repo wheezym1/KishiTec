@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tienda · KishiTec</title>
-<meta name="description" content="Catálogo completo de productos FINORA.">
+<meta name="description" content="Catálogo completo de productos KishiTec.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@ function pills(cats) {
   const all = [{ name: '', label: 'Todos' }, ...cats.map(c => ({ name: c.name, label: c.name }))];
   document.getElementById('pills').innerHTML = all.map(c => `<button class="pill ${c.name === state.cat ? 'on' : ''}" data-cat="${esc(c.name)}">${esc(c.label)}</button>`).join('');
 }
-Finora.ready.then(async () => {
+KishiTec.ready.then(async () => {
   const cats = await api('/api/categories');
   pills(cats);
   document.getElementById('sort').value = state.sort;
