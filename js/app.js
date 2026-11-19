@@ -124,19 +124,19 @@ function renderChrome(user) {
       <div class="news"><h4>Suscríbete a nuestro newsletter</h4><p>Sé el primero en enterarte de nuevos lanzamientos, ofertas y más.</p>
         <form id="newsForm"><input type="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required><button type="submit" aria-label="Suscribirme"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></form></div>
     </div>
-    <div class="legal"><span>© ${new Date().getFullYear()} FINORA. Todos los derechos reservados.</span><span>Términos y condiciones · Política de privacidad</span></div>
+    <div class="legal"><span>© ${new Date().getFullYear()} KishiTec. Todos los derechos reservados.</span><span>Términos y condiciones · Política de privacidad</span></div>
   </div></footer>`;
 
   $('#burger').addEventListener('click', () => $('#nav').classList.toggle('open'));
   $('#newsForm').addEventListener('submit', e => {
     e.preventDefault();
     const email = e.target.querySelector('input').value;
-    window.open(waLink('Hola FINORA, quiero suscribirme al newsletter con este correo: ' + email), '_blank');
+    window.open(waLink('Hola KishiTec, quiero suscribirme al newsletter con este correo: ' + email), '_blank');
     e.target.innerHTML = '<p style="margin:0;color:#d9b483">¡Gracias por suscribirte!</p>';
   });
   Cart.updateBadge();
 }
 
-/* Cada página espera a Finora.ready para conocer al usuario */
-const Finora = { user: null, config: CONFIG };
-Finora.ready = Promise.resolve().then(() => renderChrome(null));
+/* Cada página espera a KishiTec.ready para conocer al usuario */
+const KishiTec = { user: null, config: CONFIG };
+KishTec.ready = Promise.resolve().then(() => renderChrome(null));
